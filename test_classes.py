@@ -74,4 +74,8 @@ def test_volume():
 
 def test_print():
     tv_printTest = Television()
-    assertEqual tv_printTest == ""
+    assert str(tv_printTest) == "TV status: Is on = False, Channel = 0, Volume = 0"
+    tv_printTest.power()
+    tv_printTest.channel_up()
+    tv_printTest.volume_up()
+    assert str(tv_printTest) == "TV status: Is on = True, Channel = 1, Volume = 1"
