@@ -19,22 +19,48 @@ def test_power():
 
 def test_channel():
     tv_channelTest = Television()
+    # Test to make sure TV doesn't change channel while television is off
+    tv_channelTest.channel_up()
+    assert tv_channelTest.tv_channel == 0
+    tv_channelTest.power()
     tv_channelTest.channel_up()
     assert tv_channelTest.tv_channel == 1
+    tv_channelTest.channel_up()
+    assert tv_channelTest.tv_channel == 2
+    tv_channelTest.channel_up()
+    assert tv_channelTest.tv_channel == 3
+    tv_channelTest.channel_up()
+    assert tv_channelTest.tv_channel == 0
+    # Test to make sure TV doesn't change channel while television is off
+    tv_channelTest.power()
+    tv_channelTest.channel_down()
+    assert tv_channelTest.tv_channel == 0
+    tv_channelTest.power()
+    tv_channelTest.channel_down()
+    assert tv_channelTest.tv_channel == 3
+    tv_channelTest.channel_down()
+    assert tv_channelTest.tv_channel == 2
+    tv_channelTest.channel_down()
+    assert tv_channelTest.tv_channel == 1
+    tv_channelTest.channel_down()
+    assert tv_channelTest.tv_channel == 0
 
-    # assert tv_channeltest.tv_channel == 0
-    # tv_channeltest.channel_up()
-    # assert tv_channeltest.tv_channel == 2
-    # tv_channeltest.channel_up()
-    # assert tv_channeltest.tv_channel == 3
-    # tv_channeltest.channel_up()
-    # assert tv_channeltest.tv_channel == 0
 
-    # tv_channeltest.channel_down()
-    # assert tv_channeltest.tv_channel == 3
-    # tv_channeltest.channel_down()
-    # assert tv_channeltest.tv_channel == 2
-    # tv_channeltest.channel_down()
-    # assert tv_channeltest.tv_channel == 1
-    # tv_channeltest.channel_down()
-    # assert tv_channeltest.tv_channel == 0
+def test_volume():
+    tv_volumeTest = Television()
+    # Test to make sure volume cannot increase while television is off
+    tv_volumeTest.volume_up()
+    assert tv_volumeTest.tv_volume == 0
+    tv_volumeTest.power()
+    tv_volumeTest.volume_up()
+    assert tv_volumeTest.tv_volume == 1
+    tv_volumeTest.volume_up()
+    assert tv_volumeTest.tv_volume == 2
+    # Make sure that volume can't exceed max
+    tv_volumeTest.volume_up()
+    assert tv_volumeTest.tv_volume == 2
+    # Test to make sure volume cannot decrease while television is off
+    tv_volumeTest.power()
+    tv_volumeTest.volume_down()
+    assert tv_volumeTest.tv_volume == 2
+    tv_volumeTest.power()

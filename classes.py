@@ -29,7 +29,7 @@ class Television:
 
     def channel_up(self):
         """
-        Method to increase tv_channel up one channel, or if it is equal to MAX_CHANNEL, sets it to MIN_CHANNEL
+        Method to increase tv_channel up one channel if Television is on, or if it is equal to MAX_CHANNEL, sets it to MIN_CHANNEL
         """
         if self.tv_status == True:
             if self.tv_channel != Television.MAX_CHANNEL:
@@ -39,17 +39,17 @@ class Television:
 
     def channel_down(self):
         """
-        Method to decrease tv_channel down one channel, or if it is equal to MIN_CHANNEL, sets it to MAX_CHANNEL
+        Method to decrease tv_channel down one channel if Television is on, or if it is equal to MIN_CHANNEL, sets it to MAX_CHANNEL
         """
         if self.tv_status == True:
-            if self.tv_channel == Television.MAX_CHANNEL:
-                self.tv_channel = Television.MIN_CHANNEL
+            if self.tv_channel == Television.MIN_CHANNEL:
+                self.tv_channel = Television.MAX_CHANNEL
             else:
                 self.tv_channel = self.tv_channel - 1
 
     def volume_up(self):
         """
-        Method to increase tv_volume by 1 assuming that it isn't currently equal to MAX_VOLUME
+        Method to increase tv_volume by 1 assuming that it isn't currently equal to MAX_VOLUME and if Television is on
         """
         if self.tv_status == True:
             if self.tv_volume != Television.MAX_VOLUME:
@@ -57,7 +57,7 @@ class Television:
 
     def volume_down(self):
         """
-        Method to decrease tv_volume by 1 assuming that it isn't currently equal to MIN_VOLUME
+        Method to decrease tv_volume by 1 assuming that it isn't currently equal to MIN_VOLUME and if Television is on
         """
         if self.tv_status == True:
             if self.tv_volume != Television.MIN_VOLUME:
@@ -78,15 +78,3 @@ class Television:
             tv_statusString, self.tv_channel, self.tv_volume))
         return returnString
 
-    def returnChannel(self):
-        """
-        Method to return the current channel.
-        :return: tv_channel
-        """
-        return self.tv_channel
-    def returnVolume(self):
-        """
-        Method to return the current volume.
-        :return: tv_volume
-        """
-        return self.tv_volume
