@@ -64,3 +64,14 @@ def test_volume():
     tv_volumeTest.volume_down()
     assert tv_volumeTest.tv_volume == 2
     tv_volumeTest.power()
+    tv_volumeTest.volume_down()
+    assert tv_volumeTest.tv_volume == 1
+    tv_volumeTest.volume_down()
+    assert tv_volumeTest.tv_volume == 0
+    tv_volumeTest.volume_down()
+    assert tv_volumeTest.tv_volume == 0
+
+
+def test_print():
+    tv_printTest = Television()
+    assertEqual tv_printTest == ""
