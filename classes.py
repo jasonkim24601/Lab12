@@ -24,7 +24,6 @@ class Television:
         """
         if self.tv_status == False:
             self.tv_status = True
-
         else:
             self.tv_status = False
 
@@ -78,3 +77,16 @@ class Television:
         returnString = ("TV status: Is on = %s, Channel = %d, Volume = %d" % (
             tv_statusString, self.tv_channel, self.tv_volume))
         return returnString
+
+    def returnChannel(self):
+        """
+        Method to return the current channel.
+        :return: tv_channel
+        """
+        return self.tv_channel
+    def returnVolume(self):
+        """
+        Method to return the current volume.
+        :return: tv_volume
+        """
+        return self.tv_volume
